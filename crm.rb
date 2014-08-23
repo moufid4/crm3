@@ -33,7 +33,7 @@ class CRM
 		@crm.display_all_contacts if user_choice == 3
 		display_contact if user_choice == 4
 		display_attribute if user_choice == 5
-		@crm.delete if user_choice == 6
+		delete if user_choice == 6
 		puts "exit" if user_choice == 7
 	end
 	
@@ -131,6 +131,10 @@ class CRM
 
 	def delete
 		# As a user, if 'delete' is typed, I am prompted to enter an attribute value of the contact to be deleted.
+		puts "Contact ID?"
+		user_choice = gets.to_i
+		@crm.delete_contact(user_choice)
+
 	end
 
 	def exit

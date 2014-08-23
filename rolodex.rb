@@ -3,24 +3,24 @@ class Rolodex
 	def initialize
 		# As a developer, I should implement the Rolodex class as an array that accepts new contacts.
 		@contacts = {
-		# 1000 => {
-		# 	first_name: "Ross",
-		# 	last_name: "Johnson",
-		# 	email: "rossjohnson@hotmail.com",
-		# 	note: "Such a cool dude."
-		# },
-		# 1001 => {
-		# 	first_name: "Adrian",
-		# 	last_name: "Carton de Wiart",
-		# 	email: "adrianwiart@gmail.com",
-		# 	note: "Even cooler."
-		# },	
-		# 1002 => {
-		# 	first_name: "Moufid",
-		# 	last_name: "Larbi Bouamrane",
-		# 	email: "moufid4@gmail.com",
-		# 	note: "Even cooler."
-		# }	
+		1000 => {
+			first_name: "Ross",
+			last_name: "Johnson",
+			email: "rossjohnson@hotmail.com",
+			note: "Such a cool dude."
+		},
+		1001 => {
+			first_name: "Adrian",
+			last_name: "Carton de Wiart",
+			email: "adrianwiart@gmail.com",
+			note: "Even cooler."
+		},	
+		1002 => {
+			first_name: "Moufid",
+			last_name: "Larbi Bouamrane",
+			email: "moufid4@gmail.com",
+			note: "Even cooler."
+		}	
 		}
 		@contacts = contacts
 		@id = 1002
@@ -92,8 +92,9 @@ class Rolodex
 	
 	end
 
-	def delete_contact
-		
+	def delete_contact(user_choice)
+		@contacts.delete(user_choice)
+		@@session.print_menu		
 	end
 
 end
