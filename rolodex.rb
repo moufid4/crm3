@@ -3,24 +3,24 @@ class Rolodex
 	def initialize
 		# As a developer, I should implement the Rolodex class as an array that accepts new contacts.
 		@contacts = {
-		1000 => {
-			first_name: "Ross",
-			last_name: "Johnson",
-			email: "rossjohnson@hotmail.com",
-			note: "Such a cool dude."
-		},
-		1001 => {
-			first_name: "Adrian",
-			last_name: "Carton de Wiart",
-			email: "adrianwiart@gmail.com",
-			note: "Even cooler."
-		},	
-		1002 => {
-			first_name: "Moufid",
-			last_name: "Larbi Bouamrane",
-			email: "moufid4@gmail.com",
-			note: "Even cooler."
-		}	
+		# 1000 => {
+		# 	first_name: "Ross",
+		# 	last_name: "Johnson",
+		# 	email: "rossjohnson@hotmail.com",
+		# 	note: "Such a cool dude."
+		# },
+		# 1001 => {
+		# 	first_name: "Adrian",
+		# 	last_name: "Carton de Wiart",
+		# 	email: "adrianwiart@gmail.com",
+		# 	note: "Even cooler."
+		# },	
+		# 1002 => {
+		# 	first_name: "Moufid",
+		# 	last_name: "Larbi Bouamrane",
+		# 	email: "moufid4@gmail.com",
+		# 	note: "Even cooler."
+		# }	
 		}
 		@contacts = contacts
 		@id = 1002
@@ -35,7 +35,11 @@ class Rolodex
 	end
 
 	def modify_contact(id, attribute_to_modify, new_value)
-		puts "#{id} #{attribute_to_modify} #{new_value}"
+		@contacts[id][:first_name] = new_value if attribute_to_modify == "F" || attribute_to_modify == "f"
+		@contacts[id][:last_name] = new_value if attribute_to_modify == "L" || attribute_to_modify == "l"
+		@contacts[id][:email] = new_value if attribute_to_modify == "E" || attribute_to_modify == "e"
+		@contacts[id][:notes] = new_value if attribute_to_modify == "N" || attribute_to_modify == "n"
+		@@session.print_menu
 	end
 
 	def display_all_contacts

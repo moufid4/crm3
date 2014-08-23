@@ -1,19 +1,10 @@
 class Contact
-	attr_accessor :first_name, :last_name, :email, :notes
+  attr_accessor :id, :first_name, :last_name, :email, :note
 
-	def initialize
-	# As a developer, the contact class should have five attributes: id, first_name, last_name, email and notes.
-	# As a developer, when a user creates a contact, all five attributes are mandatory.
-	
-	end
-
-	def diplay_all_values
-		
-	end
+  def initialize(first_name, last_name, email, note)
+    @first_name = first_name
+    @last_name = last_name
+    @email = email
+    @note = note
+  end
 end
-
-
-
-
-# As a developer, the Contact class should also have a method that displays all of its values.
-
