@@ -5,8 +5,13 @@ class CRM
 	attr_accessor :contacts, :id
 
 	def initialize
-		@crm = Rolodex.new
+		@rolodex = Rolodex.new
 		@id = id
+	end
+
+	def self.run	
+		session = CRM.new
+		session.print_menu	
 	end
 
 	def main_menu
@@ -21,20 +26,24 @@ class CRM
 	end
 
 	def print_menu
-		main_menu
-		puts "Please make a choice"
-		user_choice = gets.to_i
-		call_option(user_choice)
+		while true
+			main_menu
+			puts "Please make a choice"
+			user_choice = gets.to_i
+			return if user_choice == 7
+			call_option(user_choice)	
+		end
+
 	end
 
 	def call_option(user_choice)
 		add_contact_menu if user_choice == 1
 		modify if user_choice == 2
-		@crm.display_all_contacts if user_choice == 3
+		@rolodex.display_all_contacts if user_choice == 3
 		display_contact if user_choice == 4
 		display_attribute if user_choice == 5
 		delete if user_choice == 6
-		puts "exit" if user_choice == 7
+		
 	end
 	
 	def add_contact_menu
@@ -54,7 +63,7 @@ class CRM
 		puts "Notes: "
 		notes = gets.chomp
 
-		@crm.add_contact(first_name, last_name, email, notes)
+		@rolodex.add_contact(first_name, last_name, email, notes)
 	end
 
 
@@ -78,8 +87,7 @@ class CRM
 		# As a user, when an attribute is entered, I am prompted to enter a new value for the attribute.
 		puts "New value?"
 		new_value = gets.chomp
-
-		@crm.modify_contact(user_choice, attribute_to_modify, new_value)
+		@rolodex.modify_contact(user_choice, attribute_to_modify, new_value)
 		end
 	end
 
@@ -87,14 +95,14 @@ class CRM
 
 	def display_all
 		# As a user, if 'display all' is typed, I am shown all of the contacts that exist.
-		@crm.display_all_contacts
+		@rolodex.display_all_contacts
 	end
 
 	def display_contact
 		# As a user, if 'display contact' is typed, I am shown a particular contact.
 		puts "Contact_ID?"
 		user_choice = gets.to_i
-		@crm.display_particular_contact(user_choice)
+		@rolodex.display_particular_contact(user_choice)
 	end
 
 
@@ -108,24 +116,24 @@ class CRM
 		if user_choice == "id" 
 			puts "id #?"
 			user_choice = gets.chomp
-			@crm.display_info_by_attribute("by_id", user_choice)
+			@rolodex.display_info_by_attribute("by_id", user_choice)
 
 		end
 
 		if user_choice == "F"
 		puts "First name?"
 		user_choice = gets.chomp
-		@crm.display_info_by_attribute("first_name", user_choice)
+		@rolodex.display_info_by_attribute("first_name", user_choice)
 		end
 		if user_choice == "L"
 			puts "Last name?"
 			user_choice = gets.chomp
-			@crm.display_info_by_attribute("last_name", user_choice)
+			@rolodex.display_info_by_attribute("last_name", user_choice)
 		end
 		if user_choice == "N"
 			puts "Notes?"
 			user_choice = gets.chomp
-			@crm.display_info_by_attribute("notes", user_choice)	
+			@rolodex.display_info_by_attribute("notes", user_choice)	
 		end
 	end
 
@@ -133,7 +141,7 @@ class CRM
 		# As a user, if 'delete' is typed, I am prompted to enter an attribute value of the contact to be deleted.
 		puts "Contact ID?"
 		user_choice = gets.to_i
-		@crm.delete_contact(user_choice)
+		@rolodex.delete_contact(user_choice)
 
 	end
 
@@ -141,6 +149,4 @@ class CRM
 		# As a user, if 'exit' is typed, I am exited out of the program and returned to the command line.
 	end
 end
-
-@@session = CRM.new
-@@session.print_menu
+CRM.run

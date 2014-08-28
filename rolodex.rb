@@ -1,29 +1,32 @@
 class Rolodex
 	attr_accessor :contacts, :id
+	
 	def initialize
 		# As a developer, I should implement the Rolodex class as an array that accepts new contacts.
 		@contacts = {
-		1000 => {
-			first_name: "Ross",
-			last_name: "Johnson",
-			email: "rossjohnson@hotmail.com",
-			note: "Such a cool dude."
-		},
-		1001 => {
-			first_name: "Adrian",
-			last_name: "Carton de Wiart",
-			email: "adrianwiart@gmail.com",
-			note: "Even cooler."
-		},	
-		1002 => {
-			first_name: "Moufid",
-			last_name: "Larbi Bouamrane",
-			email: "moufid4@gmail.com",
-			note: "Even cooler."
-		}	
+
+		# 1000 => {
+		# 	first_name: "Ross",
+		# 	last_name: "Johnson",
+		# 	email: "rossjohnson@hotmail.com",
+		# 	note: "Such a cool dude."
+		# },
+		# 1001 => {
+		# 	first_name: "Adrian",
+		# 	last_name: "Carton de Wiart",
+		# 	email: "adrianwiart@gmail.com",
+		# 	note: "Even cooler."
+		# },	
+		# 1002 => {
+		# 	first_name: "Moufid",
+		# 	last_name: "Larbi Bouamrane",
+		# 	email: "moufid4@gmail.com",
+		# 	note: "Even cooler."
+		# }	
+		
 		}
 		@contacts = contacts
-		@id = 1002
+		@id = 1000
 		@id = id
 	end
 	
@@ -31,7 +34,9 @@ class Rolodex
 		@id += 1
 		@contacts[id] = {first_name: first_name, last_name: last_name, email: email, notes: notes}
 		puts "#{@contacts}"
-		@@session.print_menu
+				puts "success"
+
+		# CRM.run
 	end
 
 	def modify_contact(id, attribute_to_modify, new_value)
@@ -39,19 +44,18 @@ class Rolodex
 		@contacts[id][:last_name] = new_value if attribute_to_modify == "L" || attribute_to_modify == "l"
 		@contacts[id][:email] = new_value if attribute_to_modify == "E" || attribute_to_modify == "e"
 		@contacts[id][:notes] = new_value if attribute_to_modify == "N" || attribute_to_modify == "n"
-		@@session.print_menu
+		# CRM.run	
+
 	end
 
 	def display_all_contacts
-		puts "#{@contacts}"
-		@@session.print_menu
-		
+		puts "#{@contacts}"		
+		# CRM.run
 	end
 
 	def display_particular_contact(user_choice)
 		puts "#{@contacts[user_choice]}"
-		@@session.print_menu
-
+		# CRM.run
 	end
 
 	def display_info_by_attribute(attribute, user_choice)
@@ -86,15 +90,15 @@ class Rolodex
 					puts "#{contact}" if key2 == "notes" || value == user_choice 
 				end
 			end
+		
 		end
+		# CRM.run	
 
-		@@session.print_menu
-	
 	end
 
 	def delete_contact(user_choice)
 		@contacts.delete(user_choice)
-		@@session.print_menu		
+		# CRM.run
 	end
 
 end
